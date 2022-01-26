@@ -98,6 +98,7 @@ window.addEventListener("mousedown", function(event) {
         //test purpose
         console.log("Chosen is " + data.sub[choice].name);
         if(data.sub[choice].name != data.main[index].sub){
+            console.log("Answer was " + data.main[index].sub);
             correct = false;
         }
 
@@ -150,6 +151,9 @@ window.addEventListener("mousedown", function(event) {
 
         //test purpose
         console.log("Chosen is " + data.special[choice].name);
+        if(data.special[choice].name != data.main[index].special)
+            console.log("Answer was " + data.main[index].sub);
+
         if(data.special[choice].name == data.main[index].special && correct){
             console.log("CORRECT");
         }

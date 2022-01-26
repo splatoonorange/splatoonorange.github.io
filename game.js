@@ -86,7 +86,7 @@ window.addEventListener("mousedown", function(event) {
             for(var i = 0; i < 7; i++){
                 if(mousex > i*158+80 && mousex < i*158+80+142)
                 {
-                    choice = i;
+                    choice = i+6;
                     break;
                 }
             }
@@ -115,6 +115,38 @@ window.addEventListener("mousedown", function(event) {
     }
     if(phase == 2)
     {
+        // Check for correctness
+        var choice = -1;
+
+        //Find what was clicked
+        //First Row
+        if(mousey > 402 && mousey < 402+142)
+        {
+            for(var i = 0; i < 8; i++){
+                if(mousex > i*158+8 && mousex < i*158+8+142)
+                {
+                    choice = i;
+                    break;
+                }
+            }
+        }
+        //Second Row
+        else if(mousey > 562 && mousey < 562+142)
+        {
+            for(var i = 0; i < 8; i++){
+                if(mousex > i*158+8 && mousex < i*158+8+142)
+                {
+                    choice = i+8;
+                    break;
+                }
+            }
+        }
+        //No button is clicked
+        if(choice == -1) return;
+
+        //test purpose
+        console.log("Chosen is " + data.special[choice].name);
+
         phase = 1;
         ctx.clearRect(512, 0, 256, 256);
         index = Math.floor((Math.random() * data.main.length) + 1);

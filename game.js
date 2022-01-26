@@ -154,7 +154,6 @@ window.addEventListener("mousedown", function(event)
 
         //test purpose
         console.log("Chosen is " + data.special[choice].name);
-        if(data.special[choice].name != data.main[index].specialweapon)
 
         if(data.special[choice].name == data.main[index].specialweapon && correct){
             ctx.textAlign = "left";
@@ -227,12 +226,12 @@ function showSpecialOptions(){
         ctx.fillRect(i*158+16,402,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, i*158+15, 409, 128, 128)
+        ctx.drawImage(img, i*158+24, 409, 128, 128)
         
         ctx.fillRect(i*158+16,562,142,142)
         var imgname = data.special[i+8].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, i*158+15, 569, 128, 128)
+        ctx.drawImage(img, i*158+24, 569, 128, 128)
     }
 }
 

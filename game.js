@@ -5,6 +5,7 @@
  var c=document.getElementById('canv').getContext("2d")
  var index=1;
  var data;
+ var phase=1;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -24,15 +25,30 @@
  window.addEventListener("click", function(event) {
     console.log(event.clientX);
 
-    c.clearRect(512, 0, 256, 256);
-    index = Math.floor((Math.random() * data.main.length) + 1);
+    if(phase == 1)
+    {
+        phase = 2;
+        showSpecialOptions();
+        return;
+    }
+    if(phase == 2)
+    {
+        phase = 1;
+        c.clearRect(512, 0, 256, 256);
+        index = Math.floor((Math.random() * data.main.length) + 1);
+    
+        var imgname = data.main[index].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, 512, 0)
+        showSubOptions();
+        console.log(data.main[index].name);
+        console.log(data.main[index].subweapon);
+        console.log(data.main[index].specialweapon);
 
-    var imgname = data.main[index].imagename.replace(".png","");
-    var img = document.getElementById(imgname);
-    c.drawImage(img, 512, 0)
-    console.log(data.main[index].name);
-    console.log(data.main[index].subweapon);
-    console.log(data.main[index].specialweapon);
+        return;
+    }
+
+    
  });
 
  function readTextFile(file, callback) {
@@ -49,6 +65,7 @@
 
 function showSubOptions(){
     c.fillStyle="#DCDCDC"
+    c.clearRect(159, 420, 1121, 300);
     
     //Draw rectangles for subs
     for(let i = 0; i < 6; i++)
@@ -56,7 +73,7 @@ function showSubOptions(){
         c.fillRect(i*158+159,420,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 427, 128, 128)
+        c.drawImage(img, i*158+166, 407, 128, 128)
     }
 
     for(let i = 6; i < 13; i++)
@@ -64,18 +81,29 @@ function showSubOptions(){
         c.fillRect((i-6)*158+80,580,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, (i-6)*158+87, 587, 128, 128)
+        c.drawImage(img, (i-6)*158+87, 567, 128, 128)
     }
 }
 
 function showSpecialOptions(){
     c.fillStyle="#DCDCDC"
+    c.clearRect(159, 420, 1121, 300);
     
-    //Draw rectangles for specials
-    for(let i = 0; i < 6; i++)
-        c.fillRect(i*158+128,420,128,128)
+    //Draw rectangles for subs
+    for(let i = 0; i < 8; i++)
+    {
+        c.fillRect(i*158+8,420,142,142)
+        var imgname = data.special[i].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, i*158+166, 407, 128, 128)
+    }
 
-    for(let i = 0; i < 7; i++)
-        c.fillRect(i*148+28,580,128,128)
+    for(let i = 8; i < 16; i++)
+    {
+        c.fillRect((i-6)*158+8,580,142,142)
+        var imgname = data.special[i].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, (i-8)*158+15, 567, 128, 128)
+    }
 }
 

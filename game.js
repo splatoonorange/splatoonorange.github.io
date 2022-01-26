@@ -8,7 +8,7 @@
  var data;
  var phase=0;
  var score=0;
- var timer=2;
+ var timer=60;
  var correct=true;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON

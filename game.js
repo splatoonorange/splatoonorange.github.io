@@ -9,6 +9,7 @@
  var phase=0;
  var score=0;
  var timer=60;
+ var correct=true;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -22,15 +23,15 @@
  }
 window.addEventListener("mousedown", function(event) {
     var rect = canvas.getBoundingClientRect();
-    console.log("height: " + (rect.bottom - rect.top));
-    console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
+    //console.log("height: " + (rect.bottom - rect.top));
+    //console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
     
     var ratio = window.innerWidth / (rect.right-rect.left);
-    console.log("Relative mouse x position: " + (((event.clientX-rect.left)/window.innerWidth)*1280*ratio))   
+    //console.log("Relative mouse x position: " + (((event.clientX-rect.left)/window.innerWidth)*1280*ratio))   
     var mousex = (((event.clientX-rect.left)/window.innerWidth)*1280*ratio);
 
     ratio = 720/(rect.bottom - rect.top);
-    console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
+    //console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
     var mousey = (event.clientY - rect.top)*ratio;
 
     if(phase == 0)
@@ -96,6 +97,9 @@ window.addEventListener("mousedown", function(event) {
 
         //test purpose
         console.log("Chosen is " + data.sub[choice].name);
+        if(data.sub[choice].name != data.main[index].sub){
+            correct = false;
+        }
 
         ctx.textAlign = "left";
         ctx.fillStyle = "#000000";
@@ -123,7 +127,7 @@ window.addEventListener("mousedown", function(event) {
         if(mousey > 402 && mousey < 402+142)
         {
             for(var i = 0; i < 8; i++){
-                if(mousex > i*158+8 && mousex < i*158+8+142)
+                if(mousex > i*158+16 && mousex < i*158+16+142)
                 {
                     choice = i;
                     break;
@@ -134,7 +138,7 @@ window.addEventListener("mousedown", function(event) {
         else if(mousey > 562 && mousey < 562+142)
         {
             for(var i = 0; i < 8; i++){
-                if(mousex > i*158+8 && mousex < i*158+8+142)
+                if(mousex > i*158+16 && mousex < i*158+16+142)
                 {
                     choice = i+8;
                     break;
@@ -146,8 +150,13 @@ window.addEventListener("mousedown", function(event) {
 
         //test purpose
         console.log("Chosen is " + data.special[choice].name);
+        if(data.special[choice].name == data.main[index].special && correct){
+            console.log("CORRECT");
+        }
+        else console.log("INCORRECT");
 
         phase = 1;
+        correct=true;
         ctx.clearRect(512, 0, 256, 256);
         index = Math.floor((Math.random() * data.main.length) + 1);
     
@@ -155,9 +164,9 @@ window.addEventListener("mousedown", function(event) {
         var img = document.getElementById(imgname);
         ctx.drawImage(img, 512, 0)
         showSubOptions();
-        console.log(data.main[index].name);
-        console.log(data.main[index].subweapon);
-        console.log(data.main[index].specialweapon);
+        //console.log(data.main[index].name);
+        //console.log(data.main[index].subweapon);
+        //console.log(data.main[index].specialweapon);
 
         return;
     }
@@ -206,18 +215,15 @@ function showSpecialOptions(){
     //Draw rectangles for subs
     for(let i = 0; i < 8; i++)
     {
-        ctx.fillRect(i*158+8,402,142,142)
+        ctx.fillRect(i*158+16,402,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
         ctx.drawImage(img, i*158+15, 409, 128, 128)
-    }
-
-    for(let i = 8; i < 16; i++)
-    {
-        ctx.fillRect((i-8)*158+8,562,142,142)
-        var imgname = data.special[i].imagename.replace(".png","");
+        
+        ctx.fillRect(i*158+16,562,142,142)
+        var imgname = data.special[i+8].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, (i-8)*158+15, 569, 128, 128)
+        ctx.drawImage(img, i*158+15, 569, 128, 128)
     }
 }
 

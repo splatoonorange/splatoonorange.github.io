@@ -15,11 +15,8 @@ body {
   justify-content: center;
 }
 
-h1{
-
-}
-
 .container {
+  position:relative;
   max-width: 1280px;
   max-height: 720px;
   width: 90%;
@@ -27,6 +24,13 @@ h1{
   margin-left: auto;
   margin-right: auto;
 }
+
+#fg {
+  position:absolute;
+  left: 0px;
+  opacity: 0%;
+}
+
 
 canvas {
   outline: 2px solid black;

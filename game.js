@@ -4,6 +4,7 @@
 
  var ctx=document.getElementById('canv').getContext("2d")
  var canvas=document.getElementById('canv');
+ var fgcanvas=document.getElementById('fg')
  var index=1;
  var data;
  var phase=0;
@@ -23,8 +24,6 @@
  }
 window.addEventListener("mousedown", function(event) 
 {
-    
-
     var rect = canvas.getBoundingClientRect();
     //console.log("height: " + (rect.bottom - rect.top));
     //console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
@@ -55,12 +54,20 @@ window.addEventListener("mousedown", function(event)
             ctx.textAlign = "left";
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
             timer--;
-            ctx.fillText(timer, 32, 64);
+            if(phase != 3){
+                ctx.fillText(timer, 32, 64);
 
-            if(timer<=0)
+                if(timer<=0)
+                {
+                    ctx.clearRect(0, 0, ctx.width, ctx.height);
+                    phase = 3;
+                    timer = 2;
+                }
+            }
+            else if(timer <= 0)
             {
-                showScore();
                 phase = 0;
+                showScore();
                 clearInterval(x);
             }
         }, 1000);
@@ -106,9 +113,12 @@ window.addEventListener("mousedown", function(event)
         //No button is clicked
         if(choice == -1) return;
 
-        //test purpose
+        //set correct to false, which will give incorrect
+        //  even if special is correct
         if(data.sub[choice].name != data.main[index].subweapon){
             correct = false;
+            warnIncorrect();
+
         }
 
         phase = 2;
@@ -163,6 +173,11 @@ window.addEventListener("mousedown", function(event)
             ctx.clearRect(32, 72, ctx.measureText("Current:" + score).width, 60);
             score++;
             ctx.fillText("Current:" + score, 32, 128);
+        }
+        else
+        {
+            warnIncorrect();
+            timer -= 2;
         }
 
         phase = 1;
@@ -237,10 +252,18 @@ function showSpecialOptions(){
     }
 }
 
-function showScore(){
-    ctx.clearRect(0, 0, 1280, 720);
+function warnIncorrect(){
+    fgcanvas.style.opacity=0.5;
+    var warn_fadeout = setInterval(function()
+    {
+        if(fgcanvas.style.opacity>0)
+            fgcanvas.style.opacity-=0.05;
+        else clearInterval(warn_fadeout);
+    }, 20);
+}
 
-    
+function showScore(){
+    ctx.clearRect(0, 0, 1280, 720);    
     ctx.font="60px monospace";
     ctx.textAlign = "center";
     ctx.fillText("Final Score: " + score, 640, 240);

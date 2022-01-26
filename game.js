@@ -23,6 +23,8 @@
  }
 window.addEventListener("mousedown", function(event) 
 {
+    
+
     var rect = canvas.getBoundingClientRect();
     //console.log("height: " + (rect.bottom - rect.top));
     //console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
@@ -158,9 +160,9 @@ window.addEventListener("mousedown", function(event)
         if(data.special[choice].name == data.main[index].specialweapon && correct){
             ctx.textAlign = "left";
             ctx.fillStyle = "#000000";
-            ctx.clearRect(32, 128, ctx.measureText("Current: " + score).width, 60);
+            ctx.clearRect(32, 72, ctx.measureText("Current:" + score).width, 60);
             score++;
-            ctx.fillText("Current: " + score, 32, 128);
+            ctx.fillText("Current:" + score, 32, 128);
         }
 
         phase = 1;

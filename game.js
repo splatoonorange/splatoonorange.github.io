@@ -97,8 +97,8 @@ window.addEventListener("mousedown", function(event) {
 
         //test purpose
         console.log("Chosen is " + data.sub[choice].name);
-        if(data.sub[choice].name != data.main[index].sub){
-            console.log("Answer was " + data.main[index].sub);
+        if(data.sub[choice].name != data.main[index].subweapon){
+            console.log("Answer was " + data.main[index].subweapon);
             correct = false;
         }
 
@@ -151,10 +151,10 @@ window.addEventListener("mousedown", function(event) {
 
         //test purpose
         console.log("Chosen is " + data.special[choice].name);
-        if(data.special[choice].name != data.main[index].special)
-            console.log("Answer was " + data.main[index].sub);
+        if(data.special[choice].name != data.main[index].specialweapon)
+            console.log("Answer was " + data.main[index].subweapon);
 
-        if(data.special[choice].name == data.main[index].special && correct){
+        if(data.special[choice].name == data.main[index].specialweapon && correct){
             console.log("CORRECT");
         }
         else console.log("INCORRECT");

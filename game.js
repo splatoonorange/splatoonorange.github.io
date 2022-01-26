@@ -22,11 +22,16 @@
  }
 window.addEventListener("mousedown", function(event) {
     var rect = canvas.getBoundingClientRect();
-    console.log("width: " + rect.right);
+    console.log("height: " + (rect.bottom - rect.top));
     console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
+    
     var ratio = window.innerWidth / (rect.right-rect.left);
-    console.log("Relative mouse position: " + (((event.clientX-rect.left)/window.innerWidth)*1280*ratio))   
+    console.log("Relative mouse x position: " + (((event.clientX-rect.left)/window.innerWidth)*1280*ratio))   
     var mousex = (((event.clientX-rect.left)/window.innerWidth)*1280*ratio);
+
+    ratio = 720/(rect.bottom - rect.top);
+    console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
+    var mousey = (event.clientY - rect.top)*ratio;
 
     if(phase == 0)
     {
@@ -65,7 +70,7 @@ window.addEventListener("mousedown", function(event) {
 
         //Find what was clicked
         //First Row
-        if(event.clientY > 420 && event.clientY < 420+142)
+        if(mousey > 420 && mousey < 420+142)
         {
             for(var i = 0; i < 6; i++){
                 if(mousex > i*158+159 && mousex < i*158+159+142)
@@ -76,7 +81,7 @@ window.addEventListener("mousedown", function(event) {
             }
         }
         //Second Row
-        else if(event.clientY > 580 && event.clientY < 580+142)
+        else if(mousey > 580 && mousey < 580+142)
         {
             for(var i = 0; i < 7; i++){
                 if(mousex > i*158+80 && mousex < i*158+80+142)
@@ -90,7 +95,7 @@ window.addEventListener("mousedown", function(event) {
         if(choice == -1) return;
 
         //test purpose
-        console.log("Chosen is " + data.sub[choice]);
+        console.log("Chosen is " + data.sub[choice].name);
 
         ctx.textAlign = "left";
         ctx.fillStyle = "#000000";

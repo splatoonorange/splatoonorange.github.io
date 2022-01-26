@@ -25,9 +25,18 @@
 
     if(phase == 0)
     {
-        //Move the game to phase 1, display weapon and subs
+        //Move the game to phase 1
         phase = 1;
         c.clearRect(0, 0, 1280, 720);
+
+        //Timer
+        var x = setInterval(function(){
+            timer--;
+            c.clearRect(0, 0, 80, 120);
+            c.fillText(timer, 20, 54);
+        }, 1000);
+
+        //display weapon and subs
         index = Math.floor((Math.random() * data.main.length) + 1);
     
         var imgname = data.main[index].imagename.replace(".png","");
@@ -35,18 +44,11 @@
         c.drawImage(img, 512, 0)
         showSubOptions();
 
-        //Set Time
-        var x = setInterval(function(){
-            timer--;
-            c.clearRect(0, 0, 80, 120);
-            c.fillText(timer, 20, 64);
-        }, 1000);
-
         return;
     }
     if(phase == 1)
     {
-        c.fillText("60", 20, 64);
+        c.fillText("Score:", 20, 104);
         phase = 2;
         showSpecialOptions();
         return;

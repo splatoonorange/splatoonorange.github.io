@@ -31,9 +31,10 @@
 
         //Timer
         var x = setInterval(function(){
+            c.textAlign = "left";
             timer--;
             c.clearRect(0, 0, 80, 120);
-            c.fillText(timer, 20, 54);
+            c.fillText(timer, 64, 54);
         }, 1000);
 
         //display weapon and subs
@@ -48,7 +49,8 @@
     }
     if(phase == 1)
     {
-        c.fillText("Score:", 20, 104);
+        c.textAlign = "left";
+        c.fillText("Score:",640, 128);
         phase = 2;
         showSpecialOptions();
         return;

@@ -53,18 +53,18 @@ function showSubOptions(){
     //Draw rectangles for subs
     for(let i = 0; i < 6; i++)
     {
-        c.fillRect(i*158+166,420,128,128)
+        c.fillRect(i*158+159,420,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 420, 128, 128)
+        c.drawImage(img, i*158+159, 420, 128, 128)
     }
 
     for(let i = 6; i < 13; i++)
     {
-        c.fillRect((i-6)*158+87,580,128,128)
+        c.fillRect((i-6)*158+80,580,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 420, 128, 128)
+        c.drawImage(img, i*158+80, 580, 128, 128)
     }
 }
 

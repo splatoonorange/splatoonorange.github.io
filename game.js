@@ -51,8 +51,8 @@ window.addEventListener("mousedown", function(event)
             ctx.font="60px monospace";
             ctx.fillStyle = "#000000";
             ctx.textAlign = "left";
-            timer--;
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
+            timer--;
             ctx.fillText(timer, 32, 64);
 
             if(timer<=0)
@@ -105,16 +105,10 @@ window.addEventListener("mousedown", function(event)
         if(choice == -1) return;
 
         //test purpose
-        console.log("Chosen is " + data.sub[choice].name);
         if(data.sub[choice].name != data.main[index].subweapon){
-            console.log("Answer was " + data.main[index].subweapon);
             correct = false;
         }
 
-        ctx.textAlign = "left";
-        ctx.fillStyle = "#000000";
-        ctx.clearRect(32, 70, ctx.measureText("Phase " + phase).width, 60);
-        ctx.fillText("Phase " + phase, 32, 128);
         phase = 2;
         showSpecialOptions();
 
@@ -161,12 +155,14 @@ window.addEventListener("mousedown", function(event)
         //test purpose
         console.log("Chosen is " + data.special[choice].name);
         if(data.special[choice].name != data.main[index].specialweapon)
-            console.log("Answer was " + data.main[index].subweapon);
 
         if(data.special[choice].name == data.main[index].specialweapon && correct){
-            console.log("CORRECT");
+            ctx.textAlign = "left";
+            ctx.fillStyle = "#000000";
+            ctx.clearRect(32, 70, ctx.measureText("Current " + score).width, 60);
+            score++;
+            ctx.fillText("Current: " + score, 32, 128);
         }
-        else console.log("INCORRECT");
 
         phase = 1;
         correct=true;

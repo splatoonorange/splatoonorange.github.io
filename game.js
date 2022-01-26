@@ -8,7 +8,7 @@
  var data;
  var phase=0;
  var score=0;
- var timer=60;
+ var timer=2;
  var correct=true;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
@@ -21,7 +21,8 @@
     ctx.fillText("Click anywhere to begin", 640, 360);
     
  }
-window.addEventListener("mousedown", function(event) {
+window.addEventListener("mousedown", function(event) 
+{
     var rect = canvas.getBoundingClientRect();
     //console.log("height: " + (rect.bottom - rect.top));
     //console.log("mouse at x: " + event.clientX + " y: " + event.clientY);
@@ -45,13 +46,21 @@ window.addEventListener("mousedown", function(event) {
         ctx.fillText(timer, 32, 64);
 
         //Timer
-        var x = setInterval(function(){
+        var x = setInterval(function()
+        {
             ctx.font="60px monospace";
             ctx.fillStyle = "#000000";
             ctx.textAlign = "left";
             timer--;
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
             ctx.fillText(timer, 32, 64);
+
+            if(timer<=0)
+            {
+                showScore();
+                phase = 0;
+                clearInterval(x);
+            }
         }, 1000);
 
         //display weapon and subs
@@ -232,6 +241,15 @@ function showSpecialOptions(){
 }
 
 function showScore(){
+    ctx.clearRect(0, 0, 1280, 720);
 
+    
+    ctx.font="60px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText("Final Score: " + score, 640, 240);
+    ctx.fillText("Click anywhere to begin", 640, 480);
+    timer = 60;
+    score = 0;
+    correct = true;
 }
 

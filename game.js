@@ -13,9 +13,7 @@
     c.fillStyle="#000000"
     c.font="60px monospace"
     
-    //Draw rectangles for subs
-    for(let i = 0; i < 13; i++)
-        c.fillRect(i*95+28,582,85,85)
+    showSubOptions();
     
     var imgname = data.main[index++].imagename.replace(".png","");
     var img = document.getElementById(imgname);
@@ -47,5 +45,37 @@
         }
     }
     rawFile.send(null);
+}
+
+function showSubOptions(){
+    c.fillStyle="#FFFFFF"
+    
+    //Draw rectangles for subs
+    for(let i = 0; i < 6; i++)
+    {
+        c.fillRect(i*158+166,420,128,128)
+        var imgname = data.sub[i].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, i*158+166, 420, 128, 128)
+    }
+
+    for(let i = 6; i < 13; i++)
+    {
+        c.fillRect((i-6)*158+87,580,128,128)
+        var imgname = data.sub[i].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, i*158+166, 420, 128, 128)
+    }
+}
+
+function showSpecialOptions(){
+    c.fillStyle="#FFFFFF"
+    
+    //Draw rectangles for specials
+    for(let i = 0; i < 6; i++)
+        c.fillRect(i*158+128,420,128,128)
+
+    for(let i = 0; i < 7; i++)
+        c.fillRect(i*148+28,580,128,128)
 }
 

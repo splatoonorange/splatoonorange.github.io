@@ -15,7 +15,7 @@
 
     readTextFile("weaponinfo.json", function(text){
         var data = JSON.parse(text); //parse JSON
-        console.log(data);
+        console.log(data.main[0].imagename.replace(".png",""));
     });
  }
 

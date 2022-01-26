@@ -7,6 +7,7 @@
  var data;
  var phase=0;
  var score=0;
+ var timer=60;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -24,6 +25,7 @@
 
     if(phase == 0)
     {
+        //Move the game to phase 1, display weapon and subs
         phase = 1;
         c.clearRect(0, 0, 1280, 720);
         index = Math.floor((Math.random() * data.main.length) + 1);
@@ -32,11 +34,19 @@
         var img = document.getElementById(imgname);
         c.drawImage(img, 512, 0)
         showSubOptions();
+
+        //Set Time
+        var x = setInterval(function(){
+            timer--;
+            c.clearRect(0, 0, 80, 120);
+            c.fillText(timer, 20, 64);
+        }, 1000);
+
         return;
     }
     if(phase == 1)
     {
-        c.fillText("Score: 1", 20, 64);
+        c.fillText("60", 20, 64);
         phase = 2;
         showSpecialOptions();
         return;

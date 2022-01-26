@@ -5,28 +5,38 @@
  var c=document.getElementById('canv').getContext("2d")
  var index=1;
  var data;
- var phase=1;
+ var phase=0;
+ var score=0;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
 
  window.onload = function() {
-    c.fillStyle="#000000"
-    c.font="60px monospace"
     
-    showSubOptions();
-    
-    var imgname = data.main[index++].imagename.replace(".png","");
-    var img = document.getElementById(imgname);
-    c.drawImage(img, 512, 0)
+    c.font="60px monospace";
+    c.textAlign = "center";
+    c.fillText("Click anywhere to begin", 640, 360);
     
  }
 
  window.addEventListener("click", function(event) {
     console.log(event.clientX);
 
+    if(phase == 0)
+    {
+        phase = 1;
+        c.clearRect(0, 0, 1280, 720);
+        index = Math.floor((Math.random() * data.main.length) + 1);
+    
+        var imgname = data.main[index].imagename.replace(".png","");
+        var img = document.getElementById(imgname);
+        c.drawImage(img, 512, 0)
+        showSubOptions();
+        return;
+    }
     if(phase == 1)
     {
+        c.fillText("Score: 1", 20, 64);
         phase = 2;
         showSpecialOptions();
         return;
@@ -46,6 +56,10 @@
         console.log(data.main[index].specialweapon);
 
         return;
+    }
+    if(phase == 3)
+    {
+        showScore();
     }
 
     
@@ -105,5 +119,9 @@ function showSpecialOptions(){
         var img = document.getElementById(imgname);
         c.drawImage(img, (i-8)*158+15, 587, 128, 128)
     }
+}
+
+function showScore(){
+
 }
 

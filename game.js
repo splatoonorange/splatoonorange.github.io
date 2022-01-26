@@ -65,7 +65,7 @@
 
 function showSubOptions(){
     c.fillStyle="#DCDCDC"
-    c.clearRect(159, 420, 1121, 300);
+    c.clearRect(0, 360, 1280, 360);
     
     //Draw rectangles for subs
     for(let i = 0; i < 6; i++)
@@ -87,7 +87,7 @@ function showSubOptions(){
 
 function showSpecialOptions(){
     c.fillStyle="#DCDCDC"
-    c.clearRect(159, 420, 1121, 300);
+    c.clearRect(0, 360, 1280, 360);
     
     //Draw rectangles for subs
     for(let i = 0; i < 8; i++)

@@ -28,9 +28,14 @@
  window.addEventListener("click", function(event) {
     console.log(event.clientX);
 
-    var imgname = data.main[index++].imagename.replace(".png","");
+    c.clearRect(512, 0, 256, 256);
+    var imgname = data.main[index].imagename.replace(".png","");
     var img = document.getElementById(imgname);
     c.drawImage(img, 512, 0)
+    console.log(data.main[index].name);
+    console.log(data.main[index].subweapon);
+    console.log(data.main[index].specialweapon);
+    index++;
 
 
  });

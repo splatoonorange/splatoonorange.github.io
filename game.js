@@ -70,7 +70,7 @@ window.addEventListener("mousedown", function(event) {
 
         //Find what was clicked
         //First Row
-        if(mousey > 420 && mousey < 420+142)
+        if(mousey > 402 && mousey < 402+142)
         {
             for(var i = 0; i < 6; i++){
                 if(mousex > i*158+159 && mousex < i*158+159+142)
@@ -81,7 +81,7 @@ window.addEventListener("mousedown", function(event) {
             }
         }
         //Second Row
-        else if(mousey > 580 && mousey < 580+142)
+        else if(mousey > 562 && mousey < 562+142)
         {
             for(var i = 0; i < 7; i++){
                 if(mousex > i*158+80 && mousex < i*158+80+142)
@@ -104,7 +104,7 @@ window.addEventListener("mousedown", function(event) {
         phase = 2;
         showSpecialOptions();
 
-        //y 420 , 420+142
+        //y 402 , 402+142
         //x first line i*158+159 (+142)
         //x second line (i-6)*158+80 (+142)
 
@@ -152,18 +152,18 @@ function showSubOptions(){
     //Draw rectangles for subs
     for(let i = 0; i < 6; i++)
     {
-        ctx.fillRect(i*158+159,420,142,142)
+        ctx.fillRect(i*158+159,402,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, i*158+166, 427, 128, 128)
+        ctx.drawImage(img, i*158+166, 409, 128, 128)
     }
 
     for(let i = 6; i < 13; i++)
     {
-        ctx.fillRect((i-6)*158+80,580,142,142)
+        ctx.fillRect((i-6)*158+80,562,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, (i-6)*158+87, 587, 128, 128)
+        ctx.drawImage(img, (i-6)*158+87, 569, 128, 128)
     }
 }
 
@@ -174,18 +174,18 @@ function showSpecialOptions(){
     //Draw rectangles for subs
     for(let i = 0; i < 8; i++)
     {
-        ctx.fillRect(i*158+8,420,142,142)
+        ctx.fillRect(i*158+8,402,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, i*158+15, 427, 128, 128)
+        ctx.drawImage(img, i*158+15, 409, 128, 128)
     }
 
     for(let i = 8; i < 16; i++)
     {
-        ctx.fillRect((i-8)*158+8,580,142,142)
+        ctx.fillRect((i-8)*158+8,562,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        ctx.drawImage(img, (i-8)*158+15, 587, 128, 128)
+        ctx.drawImage(img, (i-8)*158+15, 569, 128, 128)
     }
 }
 

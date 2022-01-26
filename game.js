@@ -48,7 +48,7 @@
 }
 
 function showSubOptions(){
-    c.fillStyle="#FFFFFF"
+    c.fillStyle="#DCDCDC"
     
     //Draw rectangles for subs
     for(let i = 0; i < 6; i++)
@@ -69,7 +69,7 @@ function showSubOptions(){
 }
 
 function showSpecialOptions(){
-    c.fillStyle="#FFFFFF"
+    c.fillStyle="#DCDCDC"
     
     //Draw rectangles for specials
     for(let i = 0; i < 6; i++)

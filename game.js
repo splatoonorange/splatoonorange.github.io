@@ -28,13 +28,20 @@
         //Move the game to phase 1
         phase = 1;
         c.clearRect(0, 0, 1280, 720);
+        c.font="60px monospace";
+        c.fillStyle = "#000000";
+        c.textAlign = "left";
+        c.fillText(timer, 32, 64);
 
         //Timer
         var x = setInterval(function(){
+            c.font="60px monospace";
+            c.fillStyle = "#000000";
             c.textAlign = "left";
             timer--;
-            c.clearRect(0, 0, 80, 120);
-            c.fillText(timer, 64, 54);
+            console.log(c.measureText("Hello").height);
+            c.clearRect(32, 6, c.measureText(timer).width, 60);
+            c.fillText(timer, 32, 64);
         }, 1000);
 
         //display weapon and subs
@@ -49,10 +56,52 @@
     }
     if(phase == 1)
     {
+        // Check for correctness
+        var choice = -1;
+
+        //Find what was clicked
+        //First Row
+        if(event.clientY > 420 && event.clientY < 420+142)
+        {
+            for(var i = 0; i < 6; i++){
+                if(event.clientX > i*158+159 && event.clientX < i*158+159+142)
+                {
+                    choice = i;
+                    break;
+                }
+            }
+        }
+        //Second Row
+        else if(event.clientY > 580 && event.clientY < 580+142)
+        {
+            for(var i = 0; i < 7; i++){
+                if(event.clientX > i*158+80 && event.clientX < i*158+80+142)
+                {
+                    choice = i;
+                    break;
+                }
+            }
+        }
+        //No button is clicked
+        if(choice == -1) return;
+
+        //test purpose
+        console.log("Chosen is " + data.sub[choice]);
+
         c.textAlign = "left";
-        c.fillText("Score:",640, 128);
+        c.fillStyle = "#000000";
+        c.clearRect(32, 70, c.measureText("Phase " + phase).width, 60);
+        c.fillText("Phase " + phase, 32, 128);
         phase = 2;
         showSpecialOptions();
+
+        //y 420 , 420+142
+        //x first line i*158+159 (+142)
+        //x second line (i-6)*158+80 (+142)
+
+        
+        
+
         return;
     }
     if(phase == 2)
@@ -70,10 +119,6 @@
         console.log(data.main[index].specialweapon);
 
         return;
-    }
-    if(phase == 3)
-    {
-        showScore();
     }
 
     

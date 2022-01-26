@@ -6,7 +6,7 @@
  index=1;
  var data;
  readTextFile("weaponinfo.json", function(text){
-    var data = JSON.parse(text); //parse JSON
+    data = JSON.parse(text); //parse JSON
 });
 
  window.onload = function() {

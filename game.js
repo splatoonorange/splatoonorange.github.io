@@ -95,7 +95,7 @@ function showSpecialOptions(){
         c.fillRect(i*158+8,420,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 427, 128, 128)
+        c.drawImage(img, i*158+15, 427, 128, 128)
     }
 
     for(let i = 8; i < 16; i++)

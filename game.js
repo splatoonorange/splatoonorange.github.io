@@ -8,7 +8,6 @@
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
- var weaponnum = data.main.length;
 
  window.onload = function() {
     c.fillStyle="#000000"
@@ -28,7 +27,7 @@
     console.log(event.clientX);
 
     c.clearRect(512, 0, 256, 256);
-    index = Math.floor((Math.random() * weaponnum) + 1);
+    index = Math.floor((Math.random() * data.main.length) + 1);
 
     var imgname = data.main[index].imagename.replace(".png","");
     var img = document.getElementById(imgname);

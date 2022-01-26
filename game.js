@@ -73,7 +73,7 @@ function showSubOptions(){
         c.fillRect(i*158+159,420,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 407, 128, 128)
+        c.drawImage(img, i*158+166, 427, 128, 128)
     }
 
     for(let i = 6; i < 13; i++)
@@ -81,7 +81,7 @@ function showSubOptions(){
         c.fillRect((i-6)*158+80,580,142,142)
         var imgname = data.sub[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, (i-6)*158+87, 567, 128, 128)
+        c.drawImage(img, (i-6)*158+87, 587, 128, 128)
     }
 }
 
@@ -95,7 +95,7 @@ function showSpecialOptions(){
         c.fillRect(i*158+8,420,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, i*158+166, 407, 128, 128)
+        c.drawImage(img, i*158+166, 427, 128, 128)
     }
 
     for(let i = 8; i < 16; i++)
@@ -103,7 +103,7 @@ function showSpecialOptions(){
         c.fillRect((i-8)*158+8,580,142,142)
         var imgname = data.special[i].imagename.replace(".png","");
         var img = document.getElementById(imgname);
-        c.drawImage(img, (i-8)*158+15, 567, 128, 128)
+        c.drawImage(img, (i-8)*158+15, 587, 128, 128)
     }
 }
 

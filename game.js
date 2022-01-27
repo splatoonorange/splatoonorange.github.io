@@ -298,6 +298,8 @@ function showScore(){
     ctx.font="60px monospace";
     ctx.textAlign = "center";
     ctx.fillText("Final Score: " + score, 640, 240);
+    if(score < 5)
+    ctx.fillText("ㅋ", 640, 360);
     ctx.fillText("Click anywhere to begin", 640, 480);
     timer = 60;
     score = 0;

@@ -216,17 +216,19 @@ window.addEventListener("click", function(event)
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
             timer -= 2;
             ctx.fillText(timer, 32, 64);
+            if(document.getElementById("helpwanted").checked)
+            {
+                var answer= setInterval(function(){
+                    console.log("test");
+                    resetQuestion();
+                },2000);
+
+                return;
+            }
         }
 
-        phase = 1;
-        correct=true;
-        ctx.clearRect(512, 0, 256, 256);
-        index = Math.floor(Math.random() * data.main.length);
-    
-        var imgname = data.main[index].imagename.replace(".png","");
-        var img = document.getElementById(imgname);
-        ctx.drawImage(img, 512, 0)
-        showSubOptions();
+        resetQuestion();
+
         //console.log(data.main[index].name);
         //console.log(data.main[index].subweapon);
         //console.log(data.main[index].specialweapon);
@@ -317,6 +319,7 @@ function showScore(){
         else if(score < 40) ctx.fillText("Is there an encyclopedia in your head?", 640, 360);
         else ctx.fillText("God of Weapon Knowledge", 640, 360);
 
+        ctx.font="30px monospace";
         ctx.fillText("Click anywhere to begin", 640, 480);
     }
     else if(document.getElementById("kr").checked)
@@ -331,6 +334,7 @@ function showScore(){
         else if(score < 40) ctx.fillText("백과사전을 외우고 다니시나요?", 640, 360);
         else ctx.fillText("무기 지식의 신", 640, 360);
 
+        ctx.font="30px monospace";
         ctx.fillText("아무곳이나 클릭해주세요!", 640, 480);
     }
 
@@ -340,3 +344,15 @@ function showScore(){
     correct = true;
 }
 
+function resetQuestion()
+{
+    phase = 1;
+    correct=true;
+    ctx.clearRect(512, 0, 256, 256);
+    index = Math.floor(Math.random() * data.main.length);
+
+    var imgname = data.main[index].imagename.replace(".png","");
+    var img = document.getElementById(imgname);
+    ctx.drawImage(img, 512, 0)
+    showSubOptions();
+}

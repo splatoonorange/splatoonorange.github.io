@@ -299,8 +299,11 @@ function showScore(){
     ctx.font="60px monospace";
     ctx.textAlign = "center";
     ctx.fillText("Final Score: " + score, 640, 240);
-    if(score < 5)
-    ctx.fillText("ㅋ", 640, 360);
+    if(score < 5) ctx.fillText("Little rusty, my friend", 640, 360);
+    else if(score < 10) ctx.fillText("C'mon, you can do better", 640, 360);
+    else if(score < 15) ctx.fillText("Pretty good, eh?", 640, 360);
+    else if(score < 20) ctx.fillText("Wow you know your weapons!", 640, 360);
+    else ctx.fillText("ProFRESHional!", 640, 360);
     ctx.fillText("Click anywhere to begin", 640, 480);
     timer = 60;
     score = 0;

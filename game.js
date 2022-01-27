@@ -138,7 +138,7 @@ window.addEventListener("click", function(event)
             correct=true;
             ctx.clearRect(512, 0, 256, 256);
             index = Math.floor(Math.random() * data.main.length);
-            console.log("Grabbing index number " + index);
+            //console.log("Grabbing index number " + index);
 
             var imgname = data.main[index].imagename.replace(".png","");
             var img = document.getElementById(imgname);
@@ -192,7 +192,7 @@ window.addEventListener("click", function(event)
         if(choice == -1) return;
 
         //test purpose
-        console.log("Chosen is " + data.special[choice].name);
+        //console.log("Chosen is " + data.special[choice].name);
 
         if(data.special[choice].name == data.main[index].specialweapon && correct){
             ctx.textAlign = "left";

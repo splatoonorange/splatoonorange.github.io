@@ -53,6 +53,7 @@ window.addEventListener("click", function(event)
         //Timer
         var x = setInterval(function()
         {
+            console.log(timer);
             ctx.font="60px monospace";
             ctx.fillStyle = "#000000";
             ctx.textAlign = "left";

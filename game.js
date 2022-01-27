@@ -37,6 +37,8 @@ window.addEventListener("mousedown", function(event)
     //console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
     var mousey = (event.clientY - rect.top)*ratio;
 
+    if(mousex < 0 || mousex > 1280 || mousey < 0 || mousey > 720) return;
+
     if(phase == 0)
     {
         //Move the game to phase 1

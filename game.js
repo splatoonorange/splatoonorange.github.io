@@ -36,9 +36,9 @@ window.addEventListener("mousedown", function(event)
     //console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
     var mousey = (event.clientY - rect.top)*ratio;
 
-    console.log("Length: " + data.main.length)
+    //console.log("Length: " + data.main.length)
     if(mousex < 0 || mousex > 1280 || mousey < 0 || mousey > 720) return;
-    console.log("x: " + mousex + " y: " + mousey);
+    //console.log("x: " + mousex + " y: " + mousey);
 
     if(phase == 0)
     {
@@ -79,7 +79,7 @@ window.addEventListener("mousedown", function(event)
         }, 1000);
 
         //display weapon and subs
-        index = Math.floor((Math.random() * data.main.length) + 1);
+        index = Math.floor(Math.random() * data.main.length);
     
         var imgname = data.main[index].imagename.replace(".png","");
         var img = document.getElementById(imgname);
@@ -134,7 +134,7 @@ window.addEventListener("mousedown", function(event)
             phase = 1;
             correct=true;
             ctx.clearRect(512, 0, 256, 256);
-            index = Math.floor((Math.random() * data.main.length) + 1);
+            index = Math.floor(Math.random() * data.main.length);
             console.log("Grabbing index number " + index);
 
             var imgname = data.main[index].imagename.replace(".png","");
@@ -212,7 +212,7 @@ window.addEventListener("mousedown", function(event)
         phase = 1;
         correct=true;
         ctx.clearRect(512, 0, 256, 256);
-        index = Math.floor((Math.random() * data.main.length) + 1);
+        index = Math.floor(Math.random() * data.main.length);
     
         var imgname = data.main[index].imagename.replace(".png","");
         var img = document.getElementById(imgname);

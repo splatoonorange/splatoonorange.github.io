@@ -10,7 +10,6 @@
  var phase=-1;
  var score=0;
  var timer=60;
- var correct=true;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -63,7 +62,7 @@ window.addEventListener("click", function(event)
 
             if(phase != 3){
                 ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
-                timer--;
+                if(phase != 4) timer--;
                 ctx.fillText(timer, 32, 64);
 
                 if(timer<=0)
@@ -141,7 +140,6 @@ window.addEventListener("click", function(event)
             ctx.fillText(timer, 32, 64);
 
             phase = 1;
-            correct=true;
             ctx.clearRect(512, 0, 256, 256);
             index = Math.floor(Math.random() * data.main.length);
             //console.log("Grabbing index number " + index);
@@ -200,7 +198,7 @@ window.addEventListener("click", function(event)
         //test purpose
         //console.log("Chosen is " + data.special[choice].name);
 
-        if(data.special[choice].name == data.main[index].specialweapon && correct){
+        if(data.special[choice].name == data.main[index].specialweapon){
             ctx.textAlign = "left";
             ctx.fillStyle = "#000000";
             ctx.clearRect(32, 72, ctx.measureText("Current:" + score).width, 60);
@@ -215,9 +213,31 @@ window.addEventListener("click", function(event)
             ctx.textAlign = "left";
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
             timer -= 2;
+            phase = 4;
             ctx.fillText(timer, 32, 64);
             if(document.getElementById("helpwanted").checked)
             {
+                // What was the answer?
+                var ans = -1;
+                for(var temp = 0;  temp < data.special.length; temp++)
+                {
+                    if(data.special[temp].name == data.main[index].specialweapon)
+                    {
+                        ans = temp;
+                        break;
+                    }
+                }
+
+                //Error Check
+                if(ans === -1)
+                {
+                    console.log("ERROR: Weapon at index " + index + "does not have a special");
+                }
+                
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+                if(ans < 8) ctx.fillRect(ans*158+16,402,142,142);
+                else ctx.fillRect((ans-8)*158+16,562,142,142);
+
                 var answer= setInterval(function(){
                     console.log("test");
                     resetQuestion();
@@ -277,7 +297,7 @@ function showSpecialOptions(){
     ctx.fillStyle="#DCDCDC"
     ctx.clearRect(0, 360, 1280, 360);
     
-    //Draw rectangles for subs
+    //Draw rectangles for specials
     for(let i = 0; i < 8; i++)
     {
         ctx.fillRect(i*158+16,402,142,142)
@@ -341,13 +361,11 @@ function showScore(){
         
     timer = 60;
     score = 0;
-    correct = true;
 }
 
 function resetQuestion()
 {
     phase = 1;
-    correct=true;
     ctx.clearRect(512, 0, 256, 256);
     index = Math.floor(Math.random() * data.main.length);
 

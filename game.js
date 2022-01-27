@@ -22,7 +22,7 @@
     phase = 0;
     
  }
-window.addEventListener("mousedown", function(event) 
+window.addEventListener("click", function(event) 
 {
     var rect = canvas.getBoundingClientRect();
     //console.log("height: " + (rect.bottom - rect.top));

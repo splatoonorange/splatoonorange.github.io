@@ -7,7 +7,7 @@
  var fgcanvas=document.getElementById('fg')
  var index=1;
  var data;
- var phase=0;
+ var phase=-1;
  var score=0;
  var timer=60;
  var correct=true;
@@ -20,6 +20,7 @@
     ctx.font="60px monospace";
     ctx.textAlign = "center";
     ctx.fillText("Click anywhere to begin", 640, 360);
+    phase = 0;
     
  }
 window.addEventListener("mousedown", function(event) 

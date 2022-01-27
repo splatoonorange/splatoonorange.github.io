@@ -59,7 +59,8 @@ window.addEventListener("mousedown", function(event)
 
                 if(timer<=0)
                 {
-                    ctx.clearRect(0, 0, ctx.width, ctx.height);
+                    ctx.clearRect(0, 0, 1280, 720);
+                    ctx.fillText("DONE", 32, 64);
                     phase = 3;
                     timer = 2;
                 }
@@ -116,8 +117,26 @@ window.addEventListener("mousedown", function(event)
         //set correct to false, which will give incorrect
         //  even if special is correct
         if(data.sub[choice].name != data.main[index].subweapon){
-            correct = false;
+            
             warnIncorrect();
+            timer -= 2;
+            ctx.font="60px monospace";
+            ctx.fillStyle = "#000000";
+            ctx.textAlign = "left";
+            ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
+            timer--;
+            ctx.fillText(timer, 32, 64);
+
+            phase = 1;
+            correct=true;
+            ctx.clearRect(512, 0, 256, 256);
+            index = Math.floor((Math.random() * data.main.length) + 1);
+        
+            var imgname = data.main[index].imagename.replace(".png","");
+            var img = document.getElementById(imgname);
+            ctx.drawImage(img, 512, 0)
+            showSubOptions();
+            return;
 
         }
 
@@ -178,6 +197,12 @@ window.addEventListener("mousedown", function(event)
         {
             warnIncorrect();
             timer -= 2;
+            ctx.font="60px monospace";
+            ctx.fillStyle = "#000000";
+            ctx.textAlign = "left";
+            ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
+            timer--;
+            ctx.fillText(timer, 32, 64);
         }
 
         phase = 1;

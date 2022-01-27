@@ -52,9 +52,10 @@ window.addEventListener("mousedown", function(event)
             ctx.font="60px monospace";
             ctx.fillStyle = "#000000";
             ctx.textAlign = "left";
-            ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
+            
             timer--;
             if(phase != 3){
+                ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
                 ctx.fillText(timer, 32, 64);
 
                 if(timer<=0)

@@ -39,3 +39,23 @@ canvas {
   width: auto;
   height: auto;
 }
+
+.options{
+  position:relative;
+  margin-left: 5%;
+  display: flex;
+}
+
+.options > div {
+  
+  margin: 50px; 
+}
+
+.language{
+  flex: 50%;
+}
+
+.help{
+  flex: 50%;
+
+}

@@ -5,13 +5,35 @@
     <title>Splatoon 2 Weapon Quiz / 스플래툰2 무기 퀴즈</title>
   </head>
   <body>
-    <h1>Test 32</h1>
+    <h1>Test 33</h1>
     
 
     <div class="container">
       <canvas id="canv" width="1280" height="720" style="background:#d18153; z-index:0"></canvas>
       <canvas id="fg" width="1280" height="720" style="background:#FF0000; z-index:1"></canvas>
       <script src="game.js"></script>
+    </div>
+
+    <div class="options">
+      <div id="language">
+          <h1>
+            Language
+          </h1>
+          <input id = "eng" type="radio" name="group-1" value="1" checked>
+          English
+          <input id = "kr" type="radio" name="group-1" value="2">
+          한글
+      </div>
+
+      <div id="help">
+        <h1>
+          Help?
+        </h1>
+        <input type="radio" name="group-2" value="1">
+        Yes
+        <input type="radio" name="group-2" value="2" checked>
+        No
+    </div>
     </div>
 
     <div class="imgcontainer" style="display:none;">

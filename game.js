@@ -18,7 +18,10 @@
  window.onload = function() {
     ctx.font="60px monospace";
     ctx.textAlign = "center";
-    ctx.fillText("Click anywhere to begin", 640, 360);
+    if(document.getElementById("eng").checked)
+        ctx.fillText("Click anywhere to begin", 640, 360);
+    else if(document.getElementById("kr").checked)
+        ctx.fillText("아무곳이나 클릭해주세요!", 640, 360);
     phase = 0;
     
  }
@@ -66,7 +69,10 @@ window.addEventListener("click", function(event)
                 if(timer<=0)
                 {
                     ctx.clearRect(0, 0, 1280, 720);
-                    ctx.fillText("DONE", 32, 64);
+                    if(document.getElementById("eng").checked)
+                        ctx.fillText("DONE", 32, 64);
+                    else if(document.getElementById("kr").checked)
+                        ctx.fillText("끝", 32, 64);
                     phase = 3;
                     timer = 2;
                 }
@@ -298,13 +304,37 @@ function showScore(){
     ctx.clearRect(0, 0, 1280, 720);    
     ctx.font="60px monospace";
     ctx.textAlign = "center";
-    ctx.fillText("Final Score: " + score, 640, 240);
-    if(score < 5) ctx.fillText("Little rusty, my friend", 640, 360);
-    else if(score < 10) ctx.fillText("C'mon, you can do better", 640, 360);
-    else if(score < 15) ctx.fillText("Pretty good, eh?", 640, 360);
-    else if(score < 20) ctx.fillText("Wow you know your weapons!", 640, 360);
-    else ctx.fillText("ProFRESHional!", 640, 360);
-    ctx.fillText("Click anywhere to begin", 640, 480);
+
+    if(document.getElementById("eng").checked)
+    {
+        ctx.fillText("Final Score: " + score, 640, 240);
+
+        if(score < 5) ctx.fillText("Little rusty, my friend", 640, 360);
+        else if(score < 10) ctx.fillText("C'mon, you can do better", 640, 360);
+        else if(score < 15) ctx.fillText("Pretty good, eh?", 640, 360);
+        else if(score < 20) ctx.fillText("Wow you know your weapons!", 640, 360);
+        else if(score < 30) ctx.fillText("ProFRESHional!", 640, 360);
+        else if(score < 40) ctx.fillText("Is there an encyclopedia in your head?", 640, 360);
+        else ctx.fillText("God of Weapon Knowledge", 640, 360);
+
+        ctx.fillText("Click anywhere to begin", 640, 480);
+    }
+    else if(document.getElementById("kr").checked)
+    {
+        ctx.fillText("최종점수: " + score, 640, 240);
+
+        if(score < 5) ctx.fillText("저런, 처음보는 무기들인가요?", 640, 360);
+        else if(score < 10) ctx.fillText("조금만 더 하면 두자릿수...!", 640, 360);
+        else if(score < 15) ctx.fillText("나쁘지 않은데요?", 640, 360);
+        else if(score < 20) ctx.fillText("정말 잘 하시는군요!", 640, 360);
+        else if(score < 30) ctx.fillText("당신은 무기의 달인입니다!", 640, 360);
+        else if(score < 40) ctx.fillText("백과사전을 외우고 다니시나요?", 640, 360);
+        else ctx.fillText("무기 지식의 신", 640, 360);
+
+        ctx.fillText("아무곳이나 클릭해주세요!", 640, 480);
+    }
+
+        
     timer = 60;
     score = 0;
     correct = true;

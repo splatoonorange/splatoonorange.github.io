@@ -38,6 +38,7 @@ window.addEventListener("mousedown", function(event)
     var mousey = (event.clientY - rect.top)*ratio;
 
     if(mousex < 0 || mousex > 1280 || mousey < 0 || mousey > 720) return;
+    //else console.log("x: " + mousex + " y: " + mousey);
 
     if(phase == 0)
     {

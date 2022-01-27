@@ -16,7 +16,6 @@
 });
 
  window.onload = function() {
-    
     ctx.font="60px monospace";
     ctx.textAlign = "center";
     ctx.fillText("Click anywhere to begin", 640, 360);
@@ -37,8 +36,9 @@ window.addEventListener("mousedown", function(event)
     //console.log("Relative mouse y positoin: " + (event.clientY - rect.top)*ratio);
     var mousey = (event.clientY - rect.top)*ratio;
 
+    console.log("Length: " + data.main.length)
     if(mousex < 0 || mousex > 1280 || mousey < 0 || mousey > 720) return;
-    else console.log("x: " + mousex + " y: " + mousey);
+    console.log("x: " + mousex + " y: " + mousey);
 
     if(phase == 0)
     {

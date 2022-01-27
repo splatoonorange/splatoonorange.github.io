@@ -56,7 +56,7 @@ window.addEventListener("click", function(event)
             ctx.font="60px monospace";
             ctx.fillStyle = "#000000";
             ctx.textAlign = "left";
-            
+
             if(phase != 3){
                 ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
                 timer--;
@@ -76,6 +76,8 @@ window.addEventListener("click", function(event)
                 showScore();
                 clearInterval(x);
             }
+            else timer--;
+
         }, 1000);
 
         //display weapon and subs

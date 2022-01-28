@@ -228,7 +228,7 @@ window.addEventListener("click", function(event)
             ctx.fillStyle = "#000000";
             ctx.clearRect(32, 72, ctx.measureText("Current:" + score).width, 60);
             score++;
-            dingdong.play();
+            //dingdong.play();
             ctx.fillText("Current:" + score, 32, 128);
         }
         else
@@ -339,7 +339,7 @@ function showSpecialOptions(){
 }
 
 function warnIncorrect(){
-    thud.play();
+    //thud.play();
     fgcanvas.style.opacity=0.5;
     var warn_fadeout = setInterval(function()
     {

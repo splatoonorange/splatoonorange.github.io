@@ -135,6 +135,7 @@ window.addEventListener("click", function(event)
             ctx.textAlign = "left";
             ctx.clearRect(32, 6, ctx.measureText(timer).width, 60);
             timer -= 2;
+            phase = 4;
             ctx.fillText(timer, 32, 64);
 
             if(document.getElementById("showanswer").checked)
@@ -253,7 +254,7 @@ window.addEventListener("click", function(event)
                     console.log("ERROR: Weapon at index " + index + "does not have a special");
                 }
                 
-                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
                 if(ans < 8) ctx.fillRect(ans*158+16,402,142,142);
                 else ctx.fillRect((ans-8)*158+16,562,142,142);
 

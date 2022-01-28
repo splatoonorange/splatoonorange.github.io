@@ -96,7 +96,7 @@ window.addEventListener("click", function(event)
 
         return;
     }
-    if(phase == 1)
+    if(phase == 1) //Subweapon
     {
         // Check for correctness
         var choice = -1;
@@ -127,8 +127,6 @@ window.addEventListener("click", function(event)
         //No button is clicked
         if(choice == -1) return;
 
-        //set correct to false, which will give incorrect
-        //  even if special is correct
         if(data.sub[choice].name != data.main[index].subweapon){
             
             warnIncorrect();
@@ -139,15 +137,36 @@ window.addEventListener("click", function(event)
             timer -= 2;
             ctx.fillText(timer, 32, 64);
 
-            phase = 1;
-            ctx.clearRect(512, 0, 256, 256);
-            index = Math.floor(Math.random() * data.main.length);
-            //console.log("Grabbing index number " + index);
+            if(document.getElementById("showanswer").checked)
+            {
+                // What was the answer?
+                var ans = -1;
+                for(var temp = 0;  temp < data.special.length; temp++)
+                {
+                    if(data.sub[temp].name == data.main[index].subweapon)
+                    {
+                        ans = temp;
+                        break;
+                    }
+                }
 
-            var imgname = data.main[index].imagename.replace(".png","");
-            var img = document.getElementById(imgname);
-            ctx.drawImage(img, 512, 0)
-            showSubOptions();
+                //Error Check
+                if(ans === -1)
+                {
+                    console.log("ERROR: Weapon at index " + index + "does not have a subweapon");
+                }
+                
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+                if(ans < 6) ctx.fillRect(i*158+159,402,142,142)
+                else ctx.fillRect((i-6)*158+80,562,142,142)
+
+                var answer= setInterval(function(){
+                    resetQuestion();
+                    clearInterval(answer);
+                },3000);
+
+                return;
+            }
             return;
 
         }
@@ -164,7 +183,7 @@ window.addEventListener("click", function(event)
 
         return;
     }
-    if(phase == 2)
+    if(phase == 2) //Special Weapon
     {
         // Check for correctness
         var choice = -1;
@@ -234,14 +253,14 @@ window.addEventListener("click", function(event)
                     console.log("ERROR: Weapon at index " + index + "does not have a special");
                 }
                 
-                ctx.fillStyle = 'rgba(0, 255, 0, 1)';
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
                 if(ans < 8) ctx.fillRect(ans*158+16,402,142,142);
                 else ctx.fillRect((ans-8)*158+16,562,142,142);
 
                 var answer= setInterval(function(){
-                    console.log("test");
                     resetQuestion();
-                },2000);
+                    clearInterval(answer);
+                },3000);
 
                 return;
             }

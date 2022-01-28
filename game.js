@@ -10,7 +10,7 @@
  var phase=-1;
  var score=0;
  var timer=60;
- var thud;
+ var thud, dingdong;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -23,6 +23,7 @@
     else if(document.getElementById("kr").checked)
         ctx.fillText("아무곳이나 클릭해주세요!", 640, 360);
     thud = new Audio("thud.mp3");
+    dingdong = new Audio("dingdong.mp3");
     phase = 0;
     
  }
@@ -170,6 +171,8 @@ window.addEventListener("click", function(event)
 
                 return;
             }
+
+            resetQuestion();
             return;
 
         }
@@ -225,6 +228,7 @@ window.addEventListener("click", function(event)
             ctx.fillStyle = "#000000";
             ctx.clearRect(32, 72, ctx.measureText("Current:" + score).width, 60);
             score++;
+            dingdong.play();
             ctx.fillText("Current:" + score, 32, 128);
         }
         else

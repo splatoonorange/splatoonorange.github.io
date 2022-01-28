@@ -158,8 +158,8 @@ window.addEventListener("click", function(event)
                 }
                 
                 ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
-                if(ans < 6) ctx.fillRect(i*158+159,402,142,142)
-                else ctx.fillRect((i-6)*158+80,562,142,142)
+                if(ans < 6) ctx.fillRect(ans*158+159,402,142,142)
+                else ctx.fillRect((ans-6)*158+80,562,142,142)
 
                 var answer= setInterval(function(){
                     resetQuestion();

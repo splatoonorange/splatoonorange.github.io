@@ -142,9 +142,9 @@ window.addEventListener("click", function(event)
             {
                 // What was the answer?
                 var ans = -1;
-                for(var temp = 0;  temp < data.special.length; temp++)
+                for(var temp = 0;  temp < data.sub.length; temp++)
                 {
-                    if(data.sub[temp].name == data.main[index].subweapon)
+                    if(data.sub[temp].name === data.main[index].subweapon)
                     {
                         ans = temp;
                         break;

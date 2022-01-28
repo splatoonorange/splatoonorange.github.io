@@ -22,7 +22,7 @@
         ctx.fillText("Click anywhere to begin", 640, 360);
     else if(document.getElementById("kr").checked)
         ctx.fillText("아무곳이나 클릭해주세요!", 640, 360);
-    thud = new sound("thud.mp3");
+    thud = new Audio("thud.mp3");
     phase = 0;
     
  }

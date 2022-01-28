@@ -42,12 +42,11 @@ canvas {
 
 .options{
   position:relative;
-  margin-left: 5%;
   display: flex;
+  justify-content: center;
 }
 
 .options > div {
-  
   margin: 50px; 
 }
 

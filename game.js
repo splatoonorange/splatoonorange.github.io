@@ -157,7 +157,7 @@ window.addEventListener("click", function(event)
                     console.log("ERROR: Weapon at index " + index + "does not have a subweapon");
                 }
                 
-                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.5)';
                 if(ans < 6) ctx.fillRect(ans*158+159,402,142,142)
                 else ctx.fillRect((ans-6)*158+80,562,142,142)
 
@@ -254,7 +254,7 @@ window.addEventListener("click", function(event)
                     console.log("ERROR: Weapon at index " + index + "does not have a special");
                 }
                 
-                ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.5)';
                 if(ans < 8) ctx.fillRect(ans*158+16,402,142,142);
                 else ctx.fillRect((ans-8)*158+16,562,142,142);
 

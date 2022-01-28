@@ -10,6 +10,7 @@
  var phase=-1;
  var score=0;
  var timer=60;
+ var thud;
  readTextFile("weaponinfo.json", function(text){
     data = JSON.parse(text); //parse JSON
 });
@@ -21,6 +22,7 @@
         ctx.fillText("Click anywhere to begin", 640, 360);
     else if(document.getElementById("kr").checked)
         ctx.fillText("아무곳이나 클릭해주세요!", 640, 360);
+    thud = new ConstantSourceNode("thud.mp3");
     phase = 0;
     
  }
@@ -333,6 +335,7 @@ function showSpecialOptions(){
 }
 
 function warnIncorrect(){
+    thud.play();
     fgcanvas.style.opacity=0.5;
     var warn_fadeout = setInterval(function()
     {
